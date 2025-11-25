@@ -103,7 +103,7 @@ export function useGoogleSheets(sheetId: string, sheetName = 'Sheet1'): UseGoogl
       const response = await fetch(url)
       
       if (!response.ok) {
-        throw new Error('Failed to fetch menu data')
+        throw new Error('Неуспешно зареждане на данните от менюто')
       }
 
       const text = await response.text()
@@ -112,7 +112,7 @@ export function useGoogleSheets(sheetId: string, sheetName = 'Sheet1'): UseGoogl
       const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?$/)
       
       if (!jsonMatch) {
-        throw new Error('Invalid response format from Google Sheets')
+        throw new Error('Невалиден формат на отговора от Google Sheets')
       }
 
       const json = JSON.parse(jsonMatch[1])
@@ -142,7 +142,7 @@ export function useGoogleSheets(sheetId: string, sheetName = 'Sheet1'): UseGoogl
       setCachedData(items)
       setLastUpdated(new Date())
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load menu')
+      setError(err instanceof Error ? err.message : 'Неуспешно зареждане на менюто')
       
       // Try to use cached data as fallback
       const cached = getCachedData()

@@ -29,7 +29,7 @@ export function MenuCard({ item, index }: MenuCardProps) {
           {!item.isAvailable && (
             <div className="absolute inset-0 flex items-center justify-center bg-background/60">
               <Badge variant="secondary" className="text-sm">
-                Currently Unavailable
+                Временно не се предлага
               </Badge>
             </div>
           )}
@@ -41,7 +41,7 @@ export function MenuCard({ item, index }: MenuCardProps) {
             {item.name}
           </CardTitle>
           <span className="shrink-0 font-display text-xl font-semibold text-primary">
-            ${item.price.toFixed(2)}
+            {item.price.toFixed(2)} лв.
           </span>
         </div>
       </CardHeader>
